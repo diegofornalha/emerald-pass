@@ -15,6 +15,11 @@ export const navItems = [
     title: 'Benefits',
     route: '#benefits',
     prefetch: true,
+  },
+  {
+    title: 'FAQ',
+    route: '#faq',
+    prefetch: true,
   }
 ];
 

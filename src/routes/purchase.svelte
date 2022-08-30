@@ -4,7 +4,6 @@
 		Benefits,
 		Stats,
 		InvitationSection,
-		FAQ,
 	} from "$lib/components/sections/home/index";
 </script>
 
@@ -15,5 +14,4 @@
 <HeroSection />
 <Stats />
 <Benefits />
-<FAQ />
 <InvitationSection />
