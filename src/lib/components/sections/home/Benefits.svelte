@@ -46,7 +46,7 @@
 	];
 </script>
 
-<div class="background-color">
+<div class="background-color" id="benefits">
 	<Section>
 		<Container class="width-large">
 			<div class="main-section">

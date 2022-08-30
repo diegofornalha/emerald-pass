@@ -13,14 +13,9 @@ export const navItems = [
   },
   {
     title: 'Benefits',
-    route: '/benefits',
+    route: '#benefits',
     prefetch: true,
-  },
-  {
-    title: 'My Pass',
-    route: '/my-pass',
-    prefetch: true,
-  },
+  }
 ];
 
 export const emeraldTools = [
