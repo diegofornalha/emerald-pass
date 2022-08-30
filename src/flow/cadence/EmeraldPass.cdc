@@ -20,7 +20,7 @@ pub contract EmeraldPass {
     pub let tokenTypeToVault: {Type: Capability<&{FungibleToken.Receiver}>}
 
     init() {
-      let ecAccount: PublicAccount = getAccount(0x5643fd47a29770e7)
+      let ecAccount: PublicAccount = getAccount(0x8f9e8e0dc951c5b9)
       self.tokenTypeToVault = {
         Type<@FUSD.Vault>(): ecAccount.getCapability<&FUSD.Vault{FungibleToken.Receiver}>(/public/fusdReceiver),
         Type<@FlowToken.Vault>(): ecAccount.getCapability<&FlowToken.Vault{FungibleToken.Receiver}>(/public/flowTokenReceiver)
@@ -91,6 +91,10 @@ pub contract EmeraldPass {
 
   }
 
+  pub fun createVault(): @Vault {
+    return <- create Vault()
+  }
+
   pub resource Admin {
 
     pub fun changePricing(newPricing: {Type: Pricing}) {
@@ -146,11 +150,16 @@ pub contract EmeraldPass {
   }
 
   pub fun getTreasury(): {Type: Capability<&{FungibleToken.Receiver}>} {
-    return self.treasury.tokenTypeToVault
+    return ECTreasury().tokenTypeToVault
   }
 
   pub fun getTime(): {String: UFix64} {
     return self.time
+  }
+
+  pub fun getUserVault(user: Address): &Vault{VaultPublic}? {
+    return getAccount(user).getCapability(EmeraldPass.VaultPublicPath)
+            .borrow<&Vault{VaultPublic}>()
   }
 
   init() {

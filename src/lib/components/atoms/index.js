@@ -24,4 +24,3 @@ export { default as Socials } from './Socials.svelte';
 export { default as EmeraldTools } from './EmeraldTools.svelte';
 export { default as Feature } from './Feature.svelte';
 export { default as Divider } from './Divider.svelte';
-export { default as EditCollectionNav } from './EditCollectionNav.svelte';

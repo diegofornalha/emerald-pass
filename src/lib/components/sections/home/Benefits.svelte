@@ -17,7 +17,7 @@
 			image: "touchstone.png",
 		},
 		{
-			title: "Emerald bot",
+			title: "Emerald Bot",
 			points: ["Setup a custom verifier for your Discord"],
 			image: "emerald-bot.png",
 		},

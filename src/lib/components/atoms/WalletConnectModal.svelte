@@ -5,14 +5,15 @@
     Stack,
     TransparentCard,
   } from "$lib/components/atoms/index";
+  import { dappTitle } from "$lib/config/config";
 </script>
 
 <div class="connection-wrapper">
   <Container>
     <TransparentCard accent={true} padding="4rem">
-      <h3>Connect to Touchstone</h3>
+      <h3>Connect to {dappTitle}</h3>
       <Stack>
-        <p>Please connect your Flow wallet to generate your collection</p>
+        <p>Please connect your Flow wallet to purchase Emerald Pass</p>
         <FlowConnect />
       </Stack>
     </TransparentCard>

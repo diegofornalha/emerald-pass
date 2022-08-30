@@ -1,6 +1,5 @@
 import { browser } from '$app/env';
 import { get } from 'svelte/store';
-import { Buffer } from 'buffer';
 
 import * as fcl from '@onflow/fcl';
 import './config';
@@ -9,8 +8,6 @@ import {
   user,
   transactionStatus,
   transactionInProgress,
-  contractInfo,
-  contractCode,
   addresses,
   network,
 } from './stores';
@@ -20,8 +17,9 @@ import {
 ///////////////
 // Scripts
 import hasEmeraldPassScript from './cadence/scripts/has_emerald_pass.cdc?raw';
+import timeOnEmeraldPassScript from './cadence/scripts/time_on_pass.cdc?raw';
 // Transactions
-import toggleMintingTx from './cadence/transactions/toggle_minting.cdc?raw';
+import purchaseEmeraldPassTx from './cadence/transactions/purchase_emerald_pass.cdc?raw';
 import setupCollectionTx from './cadence/transactions/setup_collection.cdc?raw';
 
 if (browser) {
@@ -79,6 +77,7 @@ export function replaceWithProperValues(script, contractName = '', contractAddre
     .replace('"../utility/MetadataViews.cdc"', addressList.MetadataViews)
     .replace('"../utility/FlowToken.cdc"', addressList.FlowToken)
     .replace('"../utility/FungibleToken.cdc"', addressList.FungibleToken)
+    .replace('"../utility/FUSD.cdc"', addressList.FUSD)
     .replace('"./utility/NonFungibleToken.cdc"', addressList.NonFungibleToken)
     .replace('"./utility/MetadataViews.cdc"', addressList.MetadataViews)
     .replace('"./utility/FungibleToken.cdc"', addressList.FungibleToken)
@@ -87,21 +86,24 @@ export function replaceWithProperValues(script, contractName = '', contractAddre
     .replace('"../MintVerifiers.cdc"', addressList.MintVerifiers)
     .replace('"../TouchstoneContracts.cdc"', addressList.TouchstoneContracts)
     .replace('"../utility/FLOAT.cdc"', addressList.FLOAT)
-    .replace('"../utility/EmeraldPass.cdc"', addressList.EmeraldPass)
+    .replace('"../EmeraldPass.cdc"', addressList.EmeraldPass)
     .replace('"../utility/NFTCatalog.cdc"', addressList.NFTCatalog)
     .replaceAll('0x5643fd47a29770e7', addressList.ECTreasury)
     .replaceAll('ExampleNFT', contractName);
 }
 
 // ****** Transactions ****** //
-export const toggleMinting = async () => {
+export const purchaseEmeraldPass = async (time, amount) => {
 
   initTransactionState();
 
   try {
     const transactionId = await fcl.mutate({
-      cadence: replaceWithProperValues(toggleMintingTx),
-      args: (arg, t) => [],
+      cadence: replaceWithProperValues(purchaseEmeraldPassTx),
+      args: (arg, t) => [
+        arg(time, t.String),
+        arg(amount, t.UFix64)
+      ],
       payer: fcl.authz,
       proposer: fcl.authz,
       authorizations: [fcl.authz],
@@ -154,6 +156,19 @@ export async function hasEmeraldPass(user) {
   try {
     const response = await fcl.query({
       cadence: replaceWithProperValues(hasEmeraldPassScript),
+      args: (arg, t) => [arg(user, t.Address)],
+    });
+
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function timeOnEmeraldPass(user) {
+  try {
+    const response = await fcl.query({
+      cadence: replaceWithProperValues(timeOnEmeraldPassScript),
       args: (arg, t) => [arg(user, t.Address)],
     });
 

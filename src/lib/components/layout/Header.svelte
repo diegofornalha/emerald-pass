@@ -50,7 +50,7 @@
           <FlowConnect />
           {#if $user?.loggedIn}
             {#await findProfile then profile}
-              <a href="/my-collections" sveltekit:prefetch>
+              <a href="/purchase" sveltekit:prefetch>
                 {#if profile}
                   <img
                     class="avatar"
@@ -75,7 +75,7 @@
           <AnimatedHamburger {open} {onClick} />
           {#if $user?.loggedIn}
             {#await findProfile then profile}
-              <a href="/my-collections" sveltekit:prefetch>
+              <a href="/purchase" sveltekit:prefetch>
                 {#if profile}
                   <img
                     class="avatar"
