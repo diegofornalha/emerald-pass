@@ -90,11 +90,23 @@
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 
+		@media all and (max-width: 1000px) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@media all and (max-width: 700px) {
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+		}
+
 		.benefits {
 			display: grid;
 			grid-column: span 2 / span 2;
 			gap: 40px;
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+
+			@media all and (max-width: 700px) {
+				grid-template-columns: repeat(1, minmax(0, 1fr));
+			}
 
 			.benefit {
 				align-items: flex-start;
