@@ -46,7 +46,7 @@
 </div>
 <Marquee repeat={10}>
 	<div class="marquee-element">
-		<span>CRAFTED WITH 💜 BY&nbsp;</span> EMERALD CITY DAO
+		<span>CREATED WITH 💜 BY&nbsp;</span> EMERALD CITY DAO
 	</div>
 	<div class="marquee-element emerald-wrapper">
 		<TouchstoneIcon />

@@ -1,5 +1,10 @@
 <script>
-	import { HeroSection } from "$lib/components/sections/home/index";
+	import {
+		HeroSection,
+		Benefits,
+		Stats,
+		InvitationSection,
+	} from "$lib/components/sections/home/index";
 </script>
 
 <svelte:head>
@@ -7,3 +12,6 @@
 </svelte:head>
 
 <HeroSection />
+<Stats />
+<Benefits />
+<InvitationSection />
