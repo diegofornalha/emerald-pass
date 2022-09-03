@@ -118,7 +118,8 @@ export const purchaseEmeraldPass = async (time, amount) => {
     });
   } catch (e) {
     console.log(e);
-    transactionStatus.set(99);
+    transactionInProgress.set(false);
+    transactionStatus.set({});
   }
 };
 
