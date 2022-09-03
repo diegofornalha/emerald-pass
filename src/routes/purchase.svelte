@@ -18,7 +18,11 @@
 			<div class="top">
 				{#await timeOnEmeraldPass($user.addr) then endingTime}
 					<p>You have</p>
-					<h3><Countdown unix={endingTime || 0} /></h3>
+					{#if !endingTime || endingTime <= Date.now() / 1000}
+						<h3>00:00:00</h3>
+					{:else}
+						<h3><Countdown unix={endingTime} /></h3>
+					{/if}
 					<p>left on your subscription.</p>
 				{/await}
 			</div>
@@ -31,7 +35,7 @@
 						<h5>100 $FUSD</h5>
 						<p>Add a month long of Emerald Pass benefits.</p>
 						<span class="line" />
-						<Button on:click={() => purchaseEmeraldPass("month", "100.0")}
+						<Button on:click={() => purchaseEmeraldPass("2629743.0", "100.0")}
 							>Purchase</Button>
 					</div>
 					<div class="option special-border">
@@ -39,7 +43,7 @@
 						<h5>1000 $FUSD</h5>
 						<p>Add a year long of Emerald Pass benefits.</p>
 						<span class="line" />
-						<Button on:click={() => purchaseEmeraldPass("year", "1000.0")}
+						<Button on:click={() => purchaseEmeraldPass("31556926.0", "1000.0")}
 							>Purchase</Button>
 					</div>
 				</div>

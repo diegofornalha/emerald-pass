@@ -92,13 +92,13 @@
 			}
 		},
 		"emeraldpass-account": {
-			"address": "0x5a2114f5b8c53b0d",
+			"address": "0x88b6d0be84df0918",
 			"key": {
 				"type": "hex",
 				"index": 0,
 				"signatureAlgorithm": "ECDSA_P256",
 				"hashAlgorithm": "SHA3_256",
-				"privateKey": "337e6c09d647faf961372c48a3cece203a9bbb03b0649490354a11f9b8e274c9"
+				"privateKey": "290f8cf23c1687185b57a82e9cd05418c12c73f7f600c1ad9253a20fa4b4bbb4"
 			}
 		}
 	},

@@ -1,6 +1,7 @@
 import EmeraldPass from "../EmeraldPass.cdc"
 import FUSD from "../utility/FUSD.cdc"
 import FungibleToken from "../utility/FungibleToken.cdc"
+import FlowToken from "../utility/FlowToken.cdc"
 
 transaction(time: UFix64, amount: UFix64) {
 
@@ -15,8 +16,13 @@ transaction(time: UFix64, amount: UFix64) {
 
     self.Vault = signer.borrow<&EmeraldPass.Vault>(from: EmeraldPass.VaultStoragePath)!
 
-    let fusdVault = signer.borrow<&FUSD.Vault>(from: /storage/fusdVault)!
-    self.Payment <- fusdVault.withdraw(amount: amount)
+    // FUSD
+    // let fusdVault = signer.borrow<&FUSD.Vault>(from: /storage/fusdVault)!
+    // self.Payment <- fusdVault.withdraw(amount: amount)
+
+    // Flow Token
+    let flowTokenVault = signer.borrow<&FlowToken.Vault>(from: /storage/flowTokenVault)!
+    self.Payment <- flowTokenVault.withdraw(amount: amount)
   }
 
   execute {

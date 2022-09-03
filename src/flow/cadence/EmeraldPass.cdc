@@ -163,6 +163,10 @@ pub contract EmeraldPass {
       Type<@FUSD.Vault>(): Pricing({
         2629743.0: 100.0, // 1 month
         31556926.0: 1000.0 // 1 year
+      }),
+      Type<@FlowToken.Vault>(): Pricing({
+        2629743.0: 100.0, // 1 month
+        31556926.0: 1000.0 // 1 year
       })
     }
 
