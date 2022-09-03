@@ -60,7 +60,7 @@
 		"EmeraldPass": {
 			"source": "./src/flow/cadence/EmeraldPass.cdc",
 			"aliases": {
-				"testnet": "0xc0eb53fca755377d"
+				"testnet": "0x88b6d0be84df0918"
 			}
 		},
 		"NFTCatalog": {
