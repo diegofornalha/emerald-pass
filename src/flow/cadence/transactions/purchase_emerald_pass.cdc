@@ -2,7 +2,7 @@ import EmeraldPass from "../EmeraldPass.cdc"
 import FUSD from "../utility/FUSD.cdc"
 import FungibleToken from "../utility/FungibleToken.cdc"
 
-transaction(time: String, amount: UFix64) {
+transaction(time: UFix64, amount: UFix64) {
 
   let Vault: &EmeraldPass.Vault
   let Payment: @FungibleToken.Vault
@@ -20,6 +20,6 @@ transaction(time: String, amount: UFix64) {
   }
 
   execute {
-    self.Vault.purchase(time: time, payment: <- self.Payment)
+    self.Vault.purchase(payment: <- self.Payment, time: time)
   }
 }
