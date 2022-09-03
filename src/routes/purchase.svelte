@@ -6,12 +6,14 @@
 	import WalletConnectModal from "$lib/components/atoms/WalletConnectModal.svelte";
 	import Button from "$lib/components/atoms/Button.svelte";
 	import Countdown from "$lib/components/utility/Countdown.svelte";
+	import TransactionModal from "$lib/components/atoms/TransactionModal.svelte";
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
+<TransactionModal />
 {#if $user?.loggedIn}
 	<Section>
 		<Container>

@@ -65,7 +65,7 @@ export const deployToMainnet = async () => {
 
 function initTransactionState() {
   transactionInProgress.set(true);
-  transactionStatus.set(-1);
+  transactionStatus.set({ status: -1 });
 }
 
 export function replaceWithProperValues(script, contractName = '', contractAddress = '') {
@@ -110,7 +110,7 @@ export const purchaseEmeraldPass = async (time, amount) => {
     });
     console.log({ transactionId });
     fcl.tx(transactionId).subscribe((res) => {
-      transactionStatus.set(res.status);
+      transactionStatus.set(res);
       console.log(res);
       if (res.status === 4) {
         setTimeout(() => transactionInProgress.set(false), 2000);
