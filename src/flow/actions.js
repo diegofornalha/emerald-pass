@@ -10,7 +10,7 @@ import {
   transactionInProgress,
   addresses,
   network,
-} from './stores';
+} from '$stores/FlowStore.js';
 
 ///////////////
 // Cadence code

@@ -2,7 +2,7 @@
   import {
     transactionStatus,
     transactionInProgress,
-  } from "../../../flow/stores.js";
+  } from "$stores/FlowStore.js";
   import { fly } from "svelte/transition";
   import Stack from "./Stack.svelte";
   import TransactionModalMessage from "./TransactionModalMessage.svelte";

@@ -1,6 +1,6 @@
 import { persistentWritable } from '$lib/stores/ThemeStore';
 import { writable, get, derived } from 'svelte/store';
-import { replaceWithProperValues } from './actions';
+import { replaceWithProperValues } from '$flow/actions.js';
 
 const contractData = {
   NonFungibleToken: {

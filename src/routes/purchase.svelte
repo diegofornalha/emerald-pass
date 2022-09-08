@@ -1,8 +1,8 @@
 <script>
-	import { user } from "../flow/stores.js";
+	import { user } from "$stores/FlowStore.js";
 	import Container from "$lib/components/atoms/Container.svelte";
 	import Section from "$lib/components/atoms/Section.svelte";
-	import { purchaseEmeraldPass, timeOnEmeraldPass } from "../flow/actions.js";
+	import { purchaseEmeraldPass, timeOnEmeraldPass } from "$flow/actions.js";
 	import WalletConnectModal from "$lib/components/atoms/WalletConnectModal.svelte";
 	import Button from "$lib/components/atoms/Button.svelte";
 	import Countdown from "$lib/components/utility/Countdown.svelte";

@@ -13,12 +13,12 @@ export const navItems = [
   },
   {
     title: 'Benefits',
-    route: '#benefits',
+    route: '/#benefits',
     prefetch: true,
   },
   {
     title: 'FAQ',
-    route: '#faq',
+    route: '/#faq',
     prefetch: true,
   }
 ];

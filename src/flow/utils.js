@@ -1,5 +1,5 @@
 import { get } from 'svelte/store';
-import { addresses } from './stores';
+import { addresses } from '$stores/FlowStore.js';
 import * as fcl from '@onflow/fcl';
 
 export const resolveAddressObject = async (lookup) => {

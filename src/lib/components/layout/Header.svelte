@@ -8,13 +8,11 @@
     AnimatedHamburger,
     FlowConnect,
     Stack,
-    Select,
     DiscordInvite,
-  } from "$lib/components/atoms/index.js";
-  import Navigation from "$lib/components/modules/Navigation.svelte";
-  import { goto } from "$app/navigation";
-  import { getFindProfile } from "../../../flow/utils";
-  import { user } from "../../../flow/stores.js";
+  } from "$atoms";
+  import Navigation from "$components/modules/Navigation.svelte";
+  import { getFindProfile } from "$flow/utils";
+  import { user } from "$stores/FlowStore";
 
   let findProfile = getFindProfile($user?.addr);
 
@@ -38,7 +36,7 @@
 </script>
 
 <header>
-  <Container class="width-x-large gutter-y-none">
+  <Container class="width-full gutter-y-none">
     <nav>
       <!-- Desktop menu -->
       <div class="desktop-menu">
@@ -50,7 +48,7 @@
           <FlowConnect />
           {#if $user?.loggedIn}
             {#await findProfile then profile}
-              <a href="/purchase" sveltekit:prefetch>
+              <a href="/my-collections" sveltekit:prefetch>
                 {#if profile}
                   <img
                     class="avatar"
@@ -59,7 +57,7 @@
                 {:else}
                   <img
                     class="avatar"
-                    src="https://find.xyz/assets/img/avatars/avatar16.png"
+                    src="https://cdn-icons-png.flaticon.com/512/168/168734.png"
                     alt="default avatar" />
                 {/if}
               </a>
@@ -75,7 +73,7 @@
           <AnimatedHamburger {open} {onClick} />
           {#if $user?.loggedIn}
             {#await findProfile then profile}
-              <a href="/purchase" sveltekit:prefetch>
+              <a href="/my-collections" sveltekit:prefetch>
                 {#if profile}
                   <img
                     class="avatar"
@@ -122,10 +120,11 @@
     @include mq(medium) {
       z-index: 9999;
       position: sticky;
-      background: var(--clr-background-primary-t3);
+      background-color: var(--clr-background-primary-t8);
       backdrop-filter: blur(20px);
       width: 100%;
       top: 0;
+      border-bottom: 2px var(--clr-accent-main-t7) solid;
     }
 
     .hamburger-navigation {
@@ -187,14 +186,16 @@
   }
 
   .avatar {
-    height: 42px;
+    height: 38px;
+    width: 38px;
     border-radius: 0.6rem;
-    border: 2px var(--clr-primary-main) solid;
+    border: 2px var(--clr-accent-main) solid;
     margin-left: 0.4rem;
     transition: 0.4s;
   }
+
   .avatar:hover {
-    box-shadow: var(--clr-primary-main) 4px 4px;
+    box-shadow: var(--clr-accent-main) 4px 4px;
     color: var(--clr-font-text-inverse);
     transform: translateY(-3px);
   }
